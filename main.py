@@ -12,6 +12,8 @@ from schema.usuari import LlegirUsuari
 
 from services.usuaris import UpdateUsuari
 
+from services.usuaris import delete_usuari
+
 
 app = FastAPI()
 
@@ -56,4 +58,11 @@ def cambiar_usuari(usuari_id: int, usuari: usuari, db: Generator = Depends(get_d
     if not updated:
         return {"error": "Usuari no trobat"}
     return updated
+
+@app.delete("/users/{user_id}")
+def eliminar_usuari(usuari_id: int, db: Generator = Depends(get_db)):
+    success = delete_usuari(usuari_id, db)
+    if not success:
+        return {"error": "Usuari no trobat"}
+    return {"message": "Usuari eliminat!"}
 
