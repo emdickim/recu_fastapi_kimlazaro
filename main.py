@@ -3,7 +3,7 @@ from sqlmodel import SQLModel, create_engine, Session
 from dotenv import load_dotenv
 import os
 from Models.usuaris import usuari
-from services.usuari import crear_usuari
+from services.usuaris import crear_usuari
 from fastapi import Depends
 from typing import Generator
 
