@@ -9,7 +9,8 @@ from typing import Generator
 from services.usuaris import usuari_per_id
 
 from schema.usuari import LlegirUsuari
-=======
+
+from services.usuaris import UpdateUsuari
 
 
 app = FastAPI()
@@ -41,10 +42,18 @@ def crear_usuari(usuaris: usuari, db: Generator = Depends(get_db)):
 
 @app.get("/usuaris/{usuari_id}", response_model=LlegirUsuari)
 
-@app.get("/usuaris/{usuari_id}")
-
 def read_usuari(usuari_id: int, db: Generator = Depends(get_db)):
     usuari = usuari_per_id(usuari_id, db)
     if not usuari:
         return {"error": "Usuari no trobat"}
+
     return usuari
+
+
+@app.put("/users/{usuari_id}")
+def cambiar_usuari(usuari_id: int, usuari: usuari, db: Generator = Depends(get_db)):
+    updated = update_usuari(usuari_id, usuari, db)
+    if not updated:
+        return {"error": "Usuari no trobat"}
+    return updated
+
