@@ -12,6 +12,7 @@ from schema.usuari import LlegirUsuari
 
 from services.usuaris import UpdateUsuari
 
+
 app = FastAPI()
 
 
@@ -40,10 +41,12 @@ def crear_usuari(usuaris: usuari, db: Generator = Depends(get_db)):
 
 
 @app.get("/usuaris/{usuari_id}", response_model=LlegirUsuari)
+
 def read_usuari(usuari_id: int, db: Generator = Depends(get_db)):
     usuari = usuari_per_id(usuari_id, db)
     if not usuari:
         return {"error": "Usuari no trobat"}
+
     return usuari
 
 
