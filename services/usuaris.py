@@ -21,3 +21,12 @@ def update_user(usuari_id: int, nou_valor: usuari, db: Session):
     db.commit()
     db.refresh(db_usuari)
     return db_usuari
+
+
+def delete_usuari(usuari_id: int, db: Session):
+    Usuari = db.get(usuari, usuari_id)
+    if not Usuari:
+        return False
+    db.delete(Usuari)
+    db.commit()
+    return True
