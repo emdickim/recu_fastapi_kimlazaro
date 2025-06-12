@@ -12,7 +12,7 @@ def crear_usuari(Usuari: usuari, db: Session):
     return Usuari
 
 
-def update_user(usuari_id: int, nou_valor: usuari, db: Session):
+def update_usuari(usuari_id: int, nou_valor: usuari, db: Session):
     db_usuari = db.get(usuari, usuari_id)
     if not db_usuari:
         return None
