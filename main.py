@@ -10,8 +10,7 @@ from services.usuaris import usuari_per_id
 
 from schema.usuari import LlegirUsuari
 
-from services.usuaris import UpdateUsuari
-
+from services.usuaris import update_usuari
 from services.usuaris import delete_usuari
 
 
