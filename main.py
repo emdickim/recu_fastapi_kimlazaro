@@ -26,8 +26,6 @@ def get_db():
        db.close()
 
 
-
-
 @app.post("/usuaris/")
 def crear_usuari(usuaris: usuari, db: Generator = Depends(get_db)):
     return crear_usuari(usuari, db)
