@@ -7,6 +7,7 @@ from services.usuari import crear_usuari
 from fastapi import Depends
 from typing import Generator
 
+
 app = FastAPI()
 
 
@@ -25,9 +26,7 @@ def get_db():
    finally:
        db.close()
 
-
-
-
 @app.post("/usuaris/")
 def crear_usuari(usuaris: usuari, db: Generator = Depends(get_db)):
     return crear_usuari(usuari, db)
+
